@@ -1,6 +1,7 @@
 package com.example.aerisiq.network
 
 import android.util.Log
+import com.example.aerisiq.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
@@ -22,7 +23,7 @@ data class PowerStatus(
 class CurrentUndoApiClient {
 
     private val client = OkHttpClient()
-    private val apiKey = "cu_live_B2vCajWxPBolX9HHDVb5K7IyxOA2vCx7bEp3t-eez3M"
+    private val apiKey = BuildConfig.CURRENTUNDO_API_KEY  // Set via local.properties — never committed to git
     private val baseUrl = "https://currentundo.com/api/v1"
 
     suspend fun getPowerStatus(pincode: String): PowerStatus? = withContext(Dispatchers.IO) {

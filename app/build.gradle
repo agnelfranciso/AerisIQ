@@ -13,6 +13,12 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
+
+        // Load API key from local.properties (never committed to git)
+        def localProps = new Properties()
+        def localPropsFile = rootProject.file("local.properties")
+        if (localPropsFile.exists()) { localProps.load(localPropsFile.newDataInputStream()) }
+        buildConfigField "String", "CURRENTUNDO_API_KEY", "\"${localProps.getProperty('CURRENTUNDO_API_KEY', '')}\""
     }
 
     buildTypes {
@@ -30,6 +36,7 @@ android {
     }
     buildFeatures {
         compose true
+        buildConfig true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"

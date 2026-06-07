@@ -128,6 +128,28 @@ The app downloads the **Qwen 2.5 0.5B Instruct model (~380 MB)** from HuggingFac
 
 ---
 
+## 🔑 API Key Setup
+
+AerisIQ uses the **CurrentUndo API** to fetch real-time power outage status for your district. The key is **not included** in this repository for security reasons.
+
+To enable this feature locally:
+
+1. Create or open `local.properties` in the root of the project (this file is git-ignored and never uploaded):
+   ```
+   AerisIQ/local.properties
+   ```
+
+2. Add your CurrentUndo API key:
+   ```properties
+   CURRENTUNDO_API_KEY=your_api_key_here
+   ```
+
+3. Obtain a free key at 👉 **[currentundo.com](https://currentundo.com)**
+
+> **Note**: Without this key, the Kerala Infrastructure (power status) feature will be silently disabled. All other features (alerts, AI analysis, weather) work without it.
+
+---
+
 ## ⚖️ Legal Disclaimer
 
 AerisIQ is an experimental public safety utility. AI-generated warnings and safety recommendations are compiled from general disaster management directives. They do not constitute official emergency advice. Users must always prioritize directions from civil defense, local police, and official government announcements.
