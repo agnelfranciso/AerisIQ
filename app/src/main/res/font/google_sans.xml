@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Normal (Regular) -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:fontVariationSettings="'ROND' 100, 'wght' 400"
+        app:fontVariationSettings="'ROND' 100, 'wght' 400"
+        android:font="@font/google_sans_flex"
+        app:font="@font/google_sans_flex" />
+        
+    <!-- Medium -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="500"
+        android:fontVariationSettings="'ROND' 100, 'wght' 600"
+        app:fontVariationSettings="'ROND' 100, 'wght' 600"
+        android:font="@font/google_sans_flex"
+        app:font="@font/google_sans_flex" />
+
+    <!-- Bold -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        android:fontVariationSettings="'ROND' 100, 'wght' 850"
+        app:fontVariationSettings="'ROND' 100, 'wght' 850"
+        android:font="@font/google_sans_flex"
+        app:font="@font/google_sans_flex" />
+
+    <!-- ExtraBold -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="800"
+        android:fontVariationSettings="'ROND' 100, 'wght' 1000"
+        app:fontVariationSettings="'ROND' 100, 'wght' 1000"
+        android:font="@font/google_sans_flex"
+        app:font="@font/google_sans_flex" />
+</font-family>
