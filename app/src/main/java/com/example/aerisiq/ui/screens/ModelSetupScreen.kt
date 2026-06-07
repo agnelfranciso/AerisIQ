@@ -76,7 +76,7 @@ fun ModelSetupScreen(onSetupComplete: () -> Unit) {
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "AerisIQ requires the local Qwen 2.5 AI model to interpret real-time safety and risk data directly on your device. The 1.7GB model will download securely.",
+                text = "AerisIQ requires the local Qwen 2.5 AI model to interpret real-time safety and risk data directly on your device. The ~546 MB model will download securely.",
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurfaceVariant

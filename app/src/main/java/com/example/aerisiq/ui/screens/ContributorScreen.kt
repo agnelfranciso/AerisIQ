@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.FormatQuote
 import androidx.compose.material.icons.filled.Security
@@ -217,23 +218,37 @@ fun ContributorCard(contributor: Contributor) {
                 if (contributor.githubUrl != null) {
                     Button(
                         onClick = { uriHandler.openUri(contributor.githubUrl) },
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.05f)),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.07f)),
                         shape = RoundedCornerShape(12.dp),
-                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                        modifier = Modifier.border(1.dp, Color.White.copy(alpha = 0.08f), RoundedCornerShape(12.dp))
+                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 10.dp),
+                        modifier = Modifier.border(1.dp, Color.White.copy(alpha = 0.12f), RoundedCornerShape(12.dp))
                     ) {
+                        Icon(
+                            imageVector = Icons.Default.Code,
+                            contentDescription = "GitHub",
+                            tint = Color.White,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
                         Text("GitHub", color = Color.White, fontFamily = GoogleSansFlex, fontWeight = FontWeight.Bold, fontSize = 12.sp)
                     }
                 }
                 if (contributor.instagramUrl != null) {
                     Button(
                         onClick = { uriHandler.openUri(contributor.instagramUrl) },
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.05f)),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE1306C).copy(alpha = 0.12f)),
                         shape = RoundedCornerShape(12.dp),
-                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                        modifier = Modifier.border(1.dp, Color.White.copy(alpha = 0.08f), RoundedCornerShape(12.dp))
+                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 10.dp),
+                        modifier = Modifier.border(1.dp, Color(0xFFE1306C).copy(alpha = 0.25f), RoundedCornerShape(12.dp))
                     ) {
-                        Text("Instagram", color = Color.White, fontFamily = GoogleSansFlex, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                        Icon(
+                            imageVector = Icons.Default.CameraAlt,
+                            contentDescription = "Instagram",
+                            tint = Color(0xFFE1306C),
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text("Instagram", color = Color(0xFFE1306C), fontFamily = GoogleSansFlex, fontWeight = FontWeight.Bold, fontSize = 12.sp)
                     }
                 }
             }

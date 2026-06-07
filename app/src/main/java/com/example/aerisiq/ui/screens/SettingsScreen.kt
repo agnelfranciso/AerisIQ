@@ -24,6 +24,8 @@ import com.example.aerisiq.ui.theme.*
 import kotlinx.coroutines.launch
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.SystemUpdate
+import com.example.aerisiq.updater.GithubUpdater
 
 @Composable
 fun SettingsScreen(
@@ -52,6 +54,11 @@ fun SettingsScreen(
 
     var verifyingFiles by remember { mutableStateOf(false) }
     var verificationResult by remember { mutableStateOf("") }
+
+    // Updater state
+    var updateCheckState by remember { mutableStateOf("idle") } // idle, checking, upToDate, available, downloading, error
+    var updateProgress by remember { mutableStateOf(0) }
+    var updateReleaseInfo by remember { mutableStateOf<com.example.aerisiq.updater.ReleaseInfo?>(null) }
     val scrollState = rememberScrollState()
 
     Column(
@@ -252,6 +259,139 @@ fun SettingsScreen(
                         fontFamily = GoogleSansFlex,
                         fontWeight = FontWeight.Bold
                     )
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // --- Group: Updates ---
+        Text(
+            "Updates",
+            color = PrimaryBlue,
+            style = MaterialTheme.typography.titleMedium,
+            fontFamily = GoogleSansFlex,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(start = 4.dp, bottom = 12.dp)
+        )
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(20.dp),
+            colors = CardDefaults.cardColors(containerColor = DarkSurfaceTranslucent),
+            border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.08f))
+        ) {
+            Column(modifier = Modifier.padding(20.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Default.SystemUpdate,
+                            contentDescription = null,
+                            tint = PrimaryBlue,
+                            modifier = Modifier.size(22.dp)
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Column {
+                            Text(
+                                "Check for Updates",
+                                color = Color.White,
+                                fontFamily = GoogleSansFlex,
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                            Text(
+                                "v1.0.0 · github.com/agnelfranciso/AerisIQ",
+                                color = Color.Gray,
+                                fontFamily = GoogleSansFlex,
+                                fontWeight = FontWeight.Normal,
+                                style = MaterialTheme.typography.bodySmall
+                            )
+                        }
+                    }
+                    Button(
+                        onClick = {
+                            if (updateCheckState != "checking" && updateCheckState != "downloading") {
+                                updateCheckState = "checking"
+                                coroutineScope.launch {
+                                    val release = GithubUpdater.fetchLatestRelease()
+                                    if (release == null) {
+                                        updateCheckState = "error"
+                                    } else if (GithubUpdater.isNewerVersion(release.tagName, "v1.0.0")) {
+                                        updateReleaseInfo = release
+                                        updateCheckState = "available"
+                                    } else {
+                                        updateCheckState = "upToDate"
+                                    }
+                                }
+                            }
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = PrimaryBlue),
+                        shape = RoundedCornerShape(12.dp),
+                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+                    ) {
+                        Text(
+                            when (updateCheckState) {
+                                "checking" -> "Checking..."
+                                "downloading" -> "${updateProgress}%"
+                                else -> "Check"
+                            },
+                            color = Color.White,
+                            fontFamily = GoogleSansFlex,
+                            fontWeight = FontWeight.ExtraBold,
+                            fontSize = 12.sp
+                        )
+                    }
+                }
+
+                when (updateCheckState) {
+                    "upToDate" -> {
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Text("✓ You are on the latest version.", color = Color(0xFF4CAF50), fontSize = 13.sp, fontFamily = GoogleSansFlex, fontWeight = FontWeight.Bold)
+                    }
+                    "error" -> {
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Text("Could not check for updates. Check your internet connection.", color = Color(0xFFFF5252), fontSize = 13.sp, fontFamily = GoogleSansFlex)
+                    }
+                    "available" -> {
+                        Spacer(modifier = Modifier.height(12.dp))
+                        val info = updateReleaseInfo
+                        if (info != null) {
+                            Text("New update available: ${info.name}", color = PrimaryBlue, fontSize = 13.sp, fontFamily = GoogleSansFlex, fontWeight = FontWeight.Bold)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Button(
+                                onClick = {
+                                    if (info.apkUrl != null) {
+                                        updateCheckState = "downloading"
+                                        coroutineScope.launch {
+                                            GithubUpdater.downloadAndInstallApk(context, info.apkUrl) { progress ->
+                                                updateProgress = progress
+                                            }
+                                            updateCheckState = "idle"
+                                        }
+                                    }
+                                },
+                                colors = ButtonDefaults.buttonColors(containerColor = PrimaryBlue),
+                                modifier = Modifier.fillMaxWidth(),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Text("Download & Install Update", color = Color.White, fontFamily = GoogleSansFlex, fontWeight = FontWeight.ExtraBold)
+                            }
+                        }
+                    }
+                    "downloading" -> {
+                        Spacer(modifier = Modifier.height(12.dp))
+                        LinearProgressIndicator(
+                            progress = updateProgress / 100f,
+                            modifier = Modifier.fillMaxWidth(),
+                            color = PrimaryBlue,
+                            trackColor = DarkSurface
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text("Downloading update... ${updateProgress}%", color = Color.Gray, fontSize = 12.sp, fontFamily = GoogleSansFlex)
+                    }
                 }
             }
         }

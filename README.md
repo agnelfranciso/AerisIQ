@@ -1,10 +1,6 @@
 # <img src="public/appicon.png" width="48" height="48" valign="middle"/> AerisIQ
 
-[![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com)
-[![Language](https://img.shields.io/badge/Kotlin-100%25-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org)
-[![Privacy](https://img.shields.io/badge/Privacy-100%25_Offline-00E676?style=for-the-badge&logo=google-cloud&logoColor=white)](#-privacy-by-design)
-[![LLM Engine](https://img.shields.io/badge/AI_Engine-Qwen_2.5_0.5B-E53935?style=for-the-badge&logo=huggingface&logoColor=white)](#-on-device-intelligence-core)
-[![License](https://img.shields.io/badge/License-Apache_2.0-F57C00?style=for-the-badge&logo=apache&logoColor=white)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com) [![Language](https://img.shields.io/badge/Kotlin-100%25-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org) [![Privacy](https://img.shields.io/badge/Privacy-100%25_Offline-00E676?style=for-the-badge&logo=google-cloud&logoColor=white)](#-privacy-by-design) [![LLM Engine](https://img.shields.io/badge/AI_Engine-Qwen_2.5_0.5B-E53935?style=for-the-badge&logo=huggingface&logoColor=white)](#-on-device-intelligence-core) [![License](https://img.shields.io/badge/License-Apache_2.0-F57C00?style=for-the-badge&logo=apache&logoColor=white)](LICENSE)
 
 **AerisIQ** is a Free and Open Source Software (FOSS), privacy-first disaster risk intelligence and local safety utility application for Android.
 
