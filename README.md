@@ -16,17 +16,12 @@ The app queries public warning feeds, parses raw disaster bulletins, combines th
 
 AerisIQ features a premium dark glassmorphic design system using Google Sans Flex variable-axis typography and directional page-slide transitions:
 
-<p align="center">
-  <img src="public/screen_13.png" width="280" alt="Home Dashboard & Weather Grid" />
-  <img src="public/screen_14.png" width="280" alt="Disaster Checklist Lock" />
-  <img src="public/screen_15.png" width="280" alt="Unlocking AI Analysis" />
-</p>
-
-<p align="center">
-  <img src="public/screen_16.png" width="280" alt="Active Alerts Timeline" />
-  <img src="public/screen_17.png" width="280" alt="Local Risk Intelligence Graphs" />
-  <img src="public/screen_18.png" width="280" alt="Premium Settings & Offline AI Core" />
-</p>
+| | | |
+|:---:|:---:|:---:|
+| <img src="public/screen_13.png" width="230" alt="Intro & Guide" /> | <img src="public/screen_14.png" width="230" alt="Actionable Insights" /> | <img src="public/screen_15.png" width="230" alt="AI Threat Shield" /> |
+| **Intro & Guide** | **Actionable Insights** | **AI Threat Shield** |
+| <img src="public/screen_16.png" width="230" alt="Threat Gauge" /> | <img src="public/screen_17.png" width="230" alt="Apex Simulation" /> | <img src="public/screen_18.png" width="230" alt="The Live Feed" /> |
+| **Threat Gauge** | **Apex Simulation** | **The Live Feed** |
 
 ---
 
