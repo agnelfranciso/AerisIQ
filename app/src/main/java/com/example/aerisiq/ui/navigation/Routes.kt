@@ -13,4 +13,5 @@ sealed class Route(val route: String) {
     object About : Route("about")
     object PrivacyPolicy : Route("privacy_policy")
     object TermsConditions : Route("terms_conditions")
+    object Contributor : Route("contributor")
 }

@@ -30,6 +30,7 @@ fun SettingsScreen(
     onNavigateToAbout: () -> Unit = {},
     onNavigateToPrivacy: () -> Unit = {},
     onNavigateToTerms: () -> Unit = {},
+    onNavigateToContributor: () -> Unit = {},
     onBack: () -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -294,6 +295,14 @@ fun SettingsScreen(
                     title = "Terms & Conditions",
                     description = "Emergency advisory boundaries and alert limitations.",
                     onClick = onNavigateToTerms
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                Divider(color = Color.White.copy(alpha = 0.06f))
+                Spacer(modifier = Modifier.height(20.dp))
+                SettingSelector(
+                    title = "Contributors",
+                    description = "Agnel Francis Olakkengil, Thrissur.",
+                    onClick = onNavigateToContributor
                 )
             }
         }

@@ -162,6 +162,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         prefs.edit()
             .putString("manual_state", state)
             .putString("manual_district", district)
+            .putBoolean("location_services_enabled", false)
             .apply()
         refreshData()
     }
@@ -171,6 +172,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         prefs.edit()
             .remove("manual_state")
             .remove("manual_district")
+            .putBoolean("location_services_enabled", true)
             .apply()
         refreshData()
     }
@@ -184,8 +186,18 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             if (forceRefresh) {
                 analysisPrefs.edit().clear().apply()
             }
-            val manualState = prefs.getString("manual_state", null)
-            val manualDistrict = prefs.getString("manual_district", null)
+            val locationServicesEnabled = prefs.getBoolean("location_services_enabled", true)
+            var manualState = prefs.getString("manual_state", null)
+            var manualDistrict = prefs.getString("manual_district", null)
+
+            if (!locationServicesEnabled && (manualState == null || manualDistrict == null)) {
+                manualState = "Kerala"
+                manualDistrict = "Thrissur"
+                prefs.edit()
+                    .putString("manual_state", "Kerala")
+                    .putString("manual_district", "Thrissur")
+                    .apply()
+            }
 
             val state: String
             val district: String

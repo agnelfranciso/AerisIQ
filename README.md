@@ -18,9 +18,9 @@ AerisIQ features a premium dark glassmorphic design system using Google Sans Fle
 
 | | | |
 |:---:|:---:|:---:|
-| <img src="public/screen_13.png" width="230" alt="Intro & Guide" /> | <img src="public/screen_14.png" width="230" alt="Actionable Insights" /> | <img src="public/screen_15.png" width="230" alt="AI Threat Shield" /> |
+| <img src="public/screen_13.png" width="230" /> | <img src="public/screen_14.png" width="230" /> | <img src="public/screen_15.png" width="230" /> |
 | **Intro & Guide** | **Actionable Insights** | **AI Threat Shield** |
-| <img src="public/screen_16.png" width="230" alt="Threat Gauge" /> | <img src="public/screen_17.png" width="230" alt="Apex Simulation" /> | <img src="public/screen_18.png" width="230" alt="The Live Feed" /> |
+| <img src="public/screen_16.png" width="230" /> | <img src="public/screen_17.png" width="230" /> | <img src="public/screen_18.png" width="230" /> |
 | **Threat Gauge** | **Apex Simulation** | **The Live Feed** |
 
 ---

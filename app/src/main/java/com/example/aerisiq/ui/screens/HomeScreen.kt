@@ -415,6 +415,12 @@ fun HomeScreen(onNavigateToSettings: () -> Unit = {}) {
                     onClick = {
                         viewModel.clearManualLocation()
                         showGpsResetConfirmDialog = false
+                        permissionLauncher.launch(
+                            arrayOf(
+                                Manifest.permission.ACCESS_FINE_LOCATION,
+                                Manifest.permission.ACCESS_COARSE_LOCATION
+                            )
+                        )
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = PrimaryBlue)
                 ) {
@@ -589,6 +595,13 @@ fun HomeScreen(onNavigateToSettings: () -> Unit = {}) {
                         onClick = {
                             if (isManualLocation) {
                                 showGpsResetConfirmDialog = true
+                            } else {
+                                permissionLauncher.launch(
+                                    arrayOf(
+                                        Manifest.permission.ACCESS_FINE_LOCATION,
+                                        Manifest.permission.ACCESS_COARSE_LOCATION
+                                    )
+                                )
                             }
                         }
                     ) {

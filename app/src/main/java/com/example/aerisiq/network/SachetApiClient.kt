@@ -151,6 +151,11 @@ class SachetApiClient(context: Context) {
                         XmlPullParser.END_TAG -> {
                             val tag = parser.name
                             val text = currentText.toString().trim()
+                                .replace("&gt;", ">")
+                                .replace("&lt;", "<")
+                                .replace("&amp;", "&")
+                                .replace("&quot;", "\"")
+                                .replace("&apos;", "'")
                             if (inItem) {
                                 when {
                                     tag == "title" && itemTitle.isEmpty() -> itemTitle = text
@@ -412,6 +417,11 @@ class SachetApiClient(context: Context) {
                     }
                     XmlPullParser.END_TAG -> {
                         val text = currentText.toString().trim()
+                            .replace("&gt;", ">")
+                            .replace("&lt;", "<")
+                            .replace("&amp;", "&")
+                            .replace("&quot;", "\"")
+                            .replace("&apos;", "'")
                         if (text.isNotEmpty()) {
                             when (parser.name) {
                                 "identifier" -> if (identifier.isEmpty()) identifier = text

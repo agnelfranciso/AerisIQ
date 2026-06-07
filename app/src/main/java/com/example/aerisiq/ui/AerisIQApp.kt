@@ -47,6 +47,7 @@ private fun getRoutePriority(route: String?): Int {
         Route.About.route -> 5
         Route.PrivacyPolicy.route -> 5
         Route.TermsConditions.route -> 5
+        Route.Contributor.route -> 5
         else -> 0
     }
 }
@@ -75,7 +76,8 @@ fun AerisIQApp() {
                               currentRoute != Route.Settings.route &&
                               currentRoute != Route.About.route &&
                               currentRoute != Route.PrivacyPolicy.route &&
-                              currentRoute != Route.TermsConditions.route
+                              currentRoute != Route.TermsConditions.route &&
+                              currentRoute != Route.Contributor.route
 
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         NavHost(
@@ -146,6 +148,7 @@ fun AerisIQApp() {
                     onNavigateToAbout = { navController.navigate(Route.About.route) },
                     onNavigateToPrivacy = { navController.navigate(Route.PrivacyPolicy.route) },
                     onNavigateToTerms = { navController.navigate(Route.TermsConditions.route) },
+                    onNavigateToContributor = { navController.navigate(Route.Contributor.route) },
                     onBack = { navController.popBackStack() }
                 )
             }
@@ -157,6 +160,9 @@ fun AerisIQApp() {
             }
             composable(Route.TermsConditions.route) {
                 TermsConditionsScreen(onBack = { navController.popBackStack() })
+            }
+            composable(Route.Contributor.route) {
+                ContributorScreen(onBack = { navController.popBackStack() })
             }
         }
 
